@@ -22,6 +22,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.geomarket.Fragment_home"
+            android:label="@string/title_activity_fragment_home" >
+        </activity>
+        <activity
+            android:name="com.example.geomarket.Fragment_profile"
+            android:label="@string/title_activity_fragment_profile" >
+        </activity>
+        <activity
+            android:name="com.example.geomarket.Fragment_offer"
+            android:label="@string/title_activity_fragment_offer" >
+        </activity>
+        <activity
+            android:name="com.example.geomarket.Fragment_map"
+            android:label="@string/title_activity_fragment_map" >
+        </activity>
     </application>
 
 </manifest>
