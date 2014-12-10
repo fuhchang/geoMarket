@@ -6,12 +6,14 @@ import java.io.Console;
 import java.util.List;
 
 import com.example.util.AnimatedTabHostListener;
+import com.example.util.OnSwipeTouchListener;
 import com.example.util.fragmentAdapter;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -27,6 +29,7 @@ import android.view.View.OnGenericMotionListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.TabHost.OnTabChangeListener;
+import android.widget.Toast;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class Fragment_home extends Fragment implements ActionBar.TabListener{
@@ -48,26 +51,26 @@ public class Fragment_home extends Fragment implements ActionBar.TabListener{
 		mTabHost.addTab(mTabHost.newTabSpec("offer").setIndicator("offer"), Fragment_offer.class, null);
 		mTabHost.addTab(mTabHost.newTabSpec("map view").setIndicator("map view"), Fragment_map.class, null);
 		
-		mTabHost.setOnTabChangedListener(new AnimatedTabHostListener(this.getActivity(), mTabHost));
-		
-		/*
-		final ActionBar actionBar = getActivity().getActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
-		adapter = new fragmentAdapter(getFragmentManager());
-		mViewPager = (ViewPager) getView().findViewById(R.id.pager);
-		mViewPager.setAdapter(adapter);
-		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+		//mTabHost.setOnTabChangedListener(new AnimatedTabHostListener(this.getActivity(), mTabHost));
+		mTabHost.setOnTouchListener(new OnSwipeTouchListener(this.getActivity()){
 
 			@Override
-			public void onPageSelected(int position) {
+			public void onSwipeRight() {
 				// TODO Auto-generated method stub
-				actionBar.setSelectedNavigationItem(position);
+				//mTabHost.getTabWidget().getChildTabViewAt(1);
+				mTabHost.setCurrentTab(1);
 			}
+
+			@Override
+			public void onSwipeLeft() {
+				// TODO Auto-generated method stub
+				//mTabHost.getTabWidget().getChildTabViewAt(0);
+				mTabHost.setCurrentTab(0);
+			}
+			
 		});
-		actionBar.addTab(actionBar.newTab().setText("OFFER").setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setText("MAP VIEw").setTabListener(this));
-		*/
+		
+		
 		return mTabHost;
 	}
 	@Override
